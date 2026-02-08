@@ -8,7 +8,8 @@ import {
   tool,
   type UIMessage,
 } from "ai"
-import { after, headers } from "next/server"
+import { after } from "next/server"
+import { headers } from "next/headers"
 import { createResumableStreamContext } from "resumable-stream"
 import { z } from "zod"
 import {
