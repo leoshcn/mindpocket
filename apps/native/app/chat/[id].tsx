@@ -98,6 +98,27 @@ export default function ChatScreen() {
 
   useEffect(() => {
     let cancelled = false
+    const handleLoadError = (error: unknown) => {
+      if (cancelled) {
+        return
+      }
+
+      if (error instanceof ChatApiError && error.status === 401) {
+        router.replace("/login")
+        return
+      }
+
+      if (error instanceof ChatApiError && error.status === 404) {
+        Alert.alert("对话不存在", "该对话已被删除或无权限访问", [
+          { text: "确定", onPress: () => router.replace("/(tabs)") },
+        ])
+        return
+      }
+
+      Alert.alert("加载失败", "无法获取历史消息，请稍后重试", [
+        { text: "返回", onPress: () => router.replace("/(tabs)") },
+      ])
+    }
 
     async function loadMessages() {
       if (!id) {
@@ -117,25 +138,7 @@ export default function ChatScreen() {
           setInitialMessages(detail.messages)
         }
       } catch (error) {
-        if (cancelled) {
-          return
-        }
-
-        if (error instanceof ChatApiError && error.status === 401) {
-          router.replace("/login")
-          return
-        }
-
-        if (error instanceof ChatApiError && error.status === 404) {
-          Alert.alert("对话不存在", "该对话已被删除或无权限访问", [
-            { text: "确定", onPress: () => router.replace("/(tabs)") },
-          ])
-          return
-        }
-
-        Alert.alert("加载失败", "无法获取历史消息，请稍后重试", [
-          { text: "返回", onPress: () => router.replace("/(tabs)") },
-        ])
+        handleLoadError(error)
       } finally {
         if (!cancelled) {
           setLoadingInitialMessages(false)

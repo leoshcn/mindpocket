@@ -6,7 +6,7 @@ const ALLOWED_ORIGINS = new Set([
 
 export function withCors(req: Request, response: Response): Response {
   const origin = req.headers.get("origin")
-  if (!origin || !ALLOWED_ORIGINS.has(origin)) {
+  if (!(origin && ALLOWED_ORIGINS.has(origin))) {
     return response
   }
 

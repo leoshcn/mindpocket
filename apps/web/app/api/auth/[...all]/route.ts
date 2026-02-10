@@ -4,7 +4,7 @@ import { corsPreflight, withCors } from "@/lib/cors"
 
 const authHandler = toNextJsHandler(auth)
 
-export async function OPTIONS(req: Request) {
+export function OPTIONS(req: Request) {
   return corsPreflight(req)
 }
 

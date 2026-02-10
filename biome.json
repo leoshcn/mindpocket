@@ -13,7 +13,8 @@
       "!.next",
       "!.expo",
       "!.turbo",
-      "!.agents"
+      "!.agents",
+      "!apps/native/ios/ShareExtension"
     ]
   },
   "formatter": {
@@ -26,6 +27,9 @@
     "enabled": true,
     "rules": {
       "recommended": true,
+      "correctness": {
+        "noGlobalDirnameFilename": "off"
+      },
       "style": {
         "noNonNullAssertion": "off"
       },

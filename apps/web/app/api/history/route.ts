@@ -3,7 +3,7 @@ import { getChatsByUserId } from "@/db/queries/chat"
 import { auth } from "@/lib/auth"
 import { corsPreflight, withCors } from "@/lib/cors"
 
-export async function OPTIONS(req: Request) {
+export function OPTIONS(req: Request) {
   return corsPreflight(req)
 }
 

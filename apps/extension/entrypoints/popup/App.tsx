@@ -16,6 +16,7 @@ interface User {
   email: string
 }
 type Status = "idle" | "loading" | "success" | "error"
+const WWW_PREFIX_REGEX = /^www\./
 
 function App() {
   const [user, setUser] = useState<User | null>(null)
@@ -186,7 +187,7 @@ function SavePage({ user, onLogout }: { user: User; onLogout: () => void }) {
             })()
           ) : (
             <span className="platform-badge">
-              <span>{new URL(pageInfo.url).hostname.replace(/^www\./, "")}</span>
+              <span>{new URL(pageInfo.url).hostname.replace(WWW_PREFIX_REGEX, "")}</span>
             </span>
           )}
           <p className="page-title">{pageInfo.title}</p>

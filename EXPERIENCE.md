@@ -33,3 +33,18 @@ claude 4.6 opus 能力太炸裂了，基本上都是一遍过
 
 
 # MCP & SKILLS
+
+## MCP
+
+context7
+grep
+exa
+playweight
+
+## SKILLS
+
+vercel skills 安装管理
+
+find skills
+常用的沉淀成 skills
+其实就是些提示词

@@ -38,7 +38,7 @@ function getStreamContext() {
   }
 }
 
-export async function OPTIONS(req: Request) {
+export function OPTIONS(req: Request) {
   return corsPreflight(req)
 }
 

@@ -1,6 +1,8 @@
 import { getShareExtensionKey } from "expo-share-intent"
 
-export function redirectSystemPath({ path, initial }: { path: string; initial: boolean }) {
+export function redirectSystemPath(params: { path: string; initial: boolean }) {
+  const { path } = params
+
   try {
     if (path.includes(`dataUrl=${getShareExtensionKey()}`)) {
       return "/"
