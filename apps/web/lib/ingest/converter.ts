@@ -1,4 +1,4 @@
-import { MarkItDown } from "markitdown-ts"
+import type { MarkItDown } from "markitdown-ts"
 import type { BookmarkType } from "./types"
 import { EXTENSION_TYPE_MAP, URL_TYPE_PATTERNS } from "./types"
 
@@ -6,8 +6,9 @@ let markitdownInstance: MarkItDown | null = null
 const PARAGRAPH_SPLIT_REGEX = /\n\n/
 const BROWSER_ONLY_PATTERNS = [/^https?:\/\/mp\.weixin\.qq\.com\//]
 
-function getMarkItDown(): MarkItDown {
+async function getMarkItDown(): Promise<MarkItDown> {
   if (!markitdownInstance) {
+    const { MarkItDown } = await import("markitdown-ts")
     markitdownInstance = new MarkItDown()
   }
   return markitdownInstance
@@ -28,7 +29,7 @@ export async function convertUrl(url: string) {
     return convertUrlWithBrowser(url)
   }
 
-  const md = getMarkItDown()
+  const md = await getMarkItDown()
 
   try {
     const result = await md.convert(url)
@@ -43,7 +44,7 @@ export async function convertUrl(url: string) {
 }
 
 export async function convertBuffer(buffer: Buffer, fileExtension: string) {
-  const md = getMarkItDown()
+  const md = await getMarkItDown()
   const result = await md.convertBuffer(buffer, { file_extension: fileExtension })
   if (!result) {
     return null
@@ -52,7 +53,7 @@ export async function convertBuffer(buffer: Buffer, fileExtension: string) {
 }
 
 export async function convertHtml(html: string, sourceUrl: string) {
-  const md = getMarkItDown()
+  const md = await getMarkItDown()
   const response = new Response(html, {
     headers: { "content-type": "text/html; charset=utf-8" },
   })
