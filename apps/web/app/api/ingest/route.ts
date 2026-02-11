@@ -15,6 +15,8 @@ const ALLOWED_EXTENSIONS = [
   ".html",
   ".htm",
   ".xml",
+  ".md",
+  ".markdown",
   ".jpg",
   ".jpeg",
   ".png",

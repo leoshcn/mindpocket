@@ -40,6 +40,8 @@ export const EXTENSION_TYPE_MAP: Record<string, BookmarkType> = {
   ".pdf": "document",
   ".docx": "document",
   ".doc": "document",
+  ".md": "document",
+  ".markdown": "document",
   ".xlsx": "spreadsheet",
   ".xls": "spreadsheet",
   ".csv": "spreadsheet",
