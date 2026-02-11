@@ -1,5 +1,6 @@
 module.exports = {
   reactStrictMode: true,
+  allowedDevOrigins: ["127.0.0.1", "localhost"],
   serverExternalPackages: ["@sparticuz/chromium-min"],
   turbopack: {
     resolveAlias: {

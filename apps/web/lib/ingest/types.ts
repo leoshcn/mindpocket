@@ -30,7 +30,7 @@ export const ingestUrlSchema = z.object({
 
 export const ingestExtensionSchema = z.object({
   url: z.string().url(),
-  html: z.string().min(1),
+  html: z.string().min(1).optional(),
   title: z.string().optional(),
   folderId: z.string().optional(),
   clientSource: z.enum(CLIENT_SOURCES),

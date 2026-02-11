@@ -54,7 +54,8 @@ async function handleJsonIngest(request: Request, userId: string) {
   const body = await request.json()
   console.log("[ingest] body:", JSON.stringify(body))
 
-  if (body.html) {
+  const isExtensionClient = body?.clientSource === "extension"
+  if (isExtensionClient || body.html) {
     const parsed = ingestExtensionSchema.safeParse(body)
     if (!parsed.success) {
       return NextResponse.json(

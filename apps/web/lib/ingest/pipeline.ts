@@ -37,7 +37,7 @@ interface IngestFileParams {
 interface IngestExtensionParams {
   userId: string
   url: string
-  html: string
+  html?: string
   folderId?: string
   title?: string
   clientSource: string
@@ -228,17 +228,33 @@ export async function ingestFromExtension(params: IngestExtensionParams): Promis
 
 async function processIngestExtension(
   bookmarkId: string,
-  html: string,
+  html: string | undefined,
   url: string,
   platform: string | null,
   userTitle?: string
 ) {
   await updateBookmarkStatus(bookmarkId, "processing")
   try {
-    const result = await convertWithPlatform(html, url, platform)
+    let result = null
+
+    if (platform && !needsBrowser(platform)) {
+      result = await convertWithoutHtml(url, platform)
+    }
+
+    if (!result) {
+      if (!html) {
+        await updateBookmarkStatus(
+          bookmarkId,
+          "failed",
+          `HTML is required for platform: ${platform ?? "unknown"}`
+        )
+        return
+      }
+      result = await convertWithPlatform(html, url, platform)
+    }
 
     if (!result?.markdown) {
-      await updateBookmarkStatus(bookmarkId, "failed", "HTML conversion returned empty result")
+      await updateBookmarkStatus(bookmarkId, "failed", "Conversion returned empty result")
       return
     }
 
