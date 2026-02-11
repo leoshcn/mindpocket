@@ -22,7 +22,7 @@ export default function Web() {
           <Breadcrumb>
             <BreadcrumbList>
               <BreadcrumbItem>
-                <BreadcrumbPage className="line-clamp-1">所有收藏</BreadcrumbPage>
+                <BreadcrumbPage className="line-clamp-1">收藏</BreadcrumbPage>
               </BreadcrumbItem>
             </BreadcrumbList>
           </Breadcrumb>

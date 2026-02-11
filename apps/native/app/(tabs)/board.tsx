@@ -2,13 +2,13 @@ import { Ionicons } from "@expo/vector-icons"
 import { StyleSheet, Text, View } from "react-native"
 import { useSafeAreaInsets } from "react-native-safe-area-context"
 
-export default function KnowledgeScreen() {
+export default function BoardScreen() {
   const insets = useSafeAreaInsets()
 
   return (
     <View style={[styles.container, { paddingTop: insets.top }]}>
-      <Ionicons color="#999" name="bookmark-outline" size={48} />
-      <Text style={styles.title}>收藏</Text>
+      <Ionicons color="#999" name="grid-outline" size={48} />
+      <Text style={styles.title}>看板</Text>
       <Text style={styles.subtitle}>即将推出</Text>
     </View>
   )

@@ -7,8 +7,8 @@ export default function NotesScreen() {
 
   return (
     <View style={[styles.container, { paddingTop: insets.top }]}>
-      <Ionicons color="#999" name="document-text-outline" size={48} />
-      <Text style={styles.title}>笔记</Text>
+      <Ionicons color="#999" name="download-outline" size={48} />
+      <Text style={styles.title}>导入</Text>
       <Text style={styles.subtitle}>即将推出</Text>
     </View>
   )

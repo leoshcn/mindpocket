@@ -21,11 +21,13 @@ function ChatSession({
   initialMessages,
   initialMessage,
   selectedModel,
+  useKnowledgeBase,
 }: {
   id: string
   initialMessages: UIMessage[]
   initialMessage?: string
   selectedModel?: string
+  useKnowledgeBase?: boolean
 }) {
   const router = useRouter()
   const insets = useSafeAreaInsets()
@@ -43,6 +45,7 @@ function ChatSession({
     experimental_throttle: 50,
     chatRequestBody: {
       selectedChatModel: selectedModel || "deepseek/deepseek-v3.2",
+      useKnowledgeBase: useKnowledgeBase ?? true,
     },
     onError: (err) => {
       Alert.alert("发送失败", err.message || "请稍后重试")
@@ -88,10 +91,11 @@ function ChatSession({
 
 export default function ChatScreen() {
   const router = useRouter()
-  const { id, initialMessage, selectedModel } = useLocalSearchParams<{
+  const { id, initialMessage, selectedModel, useKnowledgeBase } = useLocalSearchParams<{
     id: string
     initialMessage?: string
     selectedModel?: string
+    useKnowledgeBase?: string
   }>()
   const [loadingInitialMessages, setLoadingInitialMessages] = useState(true)
   const [initialMessages, setInitialMessages] = useState<UIMessage[]>([])
@@ -171,6 +175,7 @@ export default function ChatScreen() {
       initialMessage={initialMessage}
       initialMessages={initialMessages}
       selectedModel={selectedModel}
+      useKnowledgeBase={useKnowledgeBase !== "false"}
     />
   )
 }

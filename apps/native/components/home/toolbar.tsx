@@ -7,9 +7,16 @@ import { ModelPicker } from "./model-picker"
 interface ToolbarProps {
   selectedModel: string
   onModelChange: (model: string) => void
+  useKnowledgeBase: boolean
+  onKnowledgeBaseChange: (value: boolean) => void
 }
 
-export function Toolbar({ selectedModel, onModelChange }: ToolbarProps) {
+export function Toolbar({
+  selectedModel,
+  onModelChange,
+  useKnowledgeBase,
+  onKnowledgeBaseChange,
+}: ToolbarProps) {
   const [pickerVisible, setPickerVisible] = useState(false)
   const currentModel = chatModels.find((m) => m.id === selectedModel)
 
@@ -25,8 +32,13 @@ export function Toolbar({ selectedModel, onModelChange }: ToolbarProps) {
           label={currentModel?.name ?? "GPT-4o Mini"}
           onPress={() => setPickerVisible(true)}
         />
+        <ToolbarToggleChip
+          active={useKnowledgeBase}
+          icon="book-outline"
+          label="知识库"
+          onPress={() => onKnowledgeBaseChange(!useKnowledgeBase)}
+        />
         <ToolbarIconButton icon="at" />
-        <ToolbarIconButton icon="wifi-outline" />
         <ToolbarIconButton icon="add" />
       </ScrollView>
       <ModelPicker
@@ -53,6 +65,25 @@ function ToolbarChip({
       <Ionicons color="#666" name={icon} size={16} />
       <Text style={styles.chipText}>{label}</Text>
       <Ionicons color="#999" name="chevron-down" size={12} />
+    </Pressable>
+  )
+}
+
+function ToolbarToggleChip({
+  active,
+  icon,
+  label,
+  onPress,
+}: {
+  active: boolean
+  icon: keyof typeof Ionicons.glyphMap
+  label: string
+  onPress: () => void
+}) {
+  return (
+    <Pressable onPress={onPress} style={[styles.chip, active && styles.chipActive]}>
+      <Ionicons color={active ? "#2563eb" : "#666"} name={icon} size={16} />
+      <Text style={[styles.chipText, active && styles.chipTextActive]}>{label}</Text>
     </Pressable>
   )
 }
@@ -84,9 +115,16 @@ const styles = StyleSheet.create({
     paddingHorizontal: 12,
     paddingVertical: 6,
   },
+  chipActive: {
+    borderColor: "#bfdbfe",
+    backgroundColor: "#eff6ff",
+  },
   chipText: {
     fontSize: 14,
     color: "#525252",
+  },
+  chipTextActive: {
+    color: "#2563eb",
   },
   iconButton: {
     alignItems: "center",

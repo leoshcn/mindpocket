@@ -35,25 +35,36 @@ export default function TabLayout() {
       <Tabs.Screen
         name="index"
         options={{
-          title: "MindPocket",
-          tabBarIcon: ({ color, size }) => <Ionicons color={color} name="sparkles" size={size} />,
+          title: "对话",
+          tabBarIcon: ({ color, size }) => (
+            <Ionicons color={color} name="chatbubble-outline" size={size} />
+          ),
         }}
       />
       <Tabs.Screen
         name="knowledge"
         options={{
-          title: "知识库",
+          title: "收藏",
           tabBarIcon: ({ color, size }) => (
-            <Ionicons color={color} name="library-outline" size={size} />
+            <Ionicons color={color} name="bookmark-outline" size={size} />
           ),
         }}
       />
       <Tabs.Screen
         name="notes"
         options={{
-          title: "笔记",
+          title: "导入",
           tabBarIcon: ({ color, size }) => (
-            <Ionicons color={color} name="document-text-outline" size={size} />
+            <Ionicons color={color} name="download-outline" size={size} />
+          ),
+        }}
+      />
+      <Tabs.Screen
+        name="board"
+        options={{
+          title: "看板",
+          tabBarIcon: ({ color, size }) => (
+            <Ionicons color={color} name="grid-outline" size={size} />
           ),
         }}
       />

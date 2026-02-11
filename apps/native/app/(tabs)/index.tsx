@@ -15,6 +15,7 @@ export default function HomeScreen() {
   const router = useRouter()
   const [drawerOpen, setDrawerOpen] = useState(false)
   const [selectedModel, setSelectedModel] = useState("deepseek/deepseek-v3.2")
+  const [useKnowledgeBase, setUseKnowledgeBase] = useState(true)
   const [historySections, setHistorySections] = useState<HistorySection[]>([])
   const [historyLoading, setHistoryLoading] = useState(false)
   const [historyError, setHistoryError] = useState<string>()
@@ -27,7 +28,12 @@ export default function HomeScreen() {
     const chatId = Date.now().toString(36) + Math.random().toString(36).slice(2)
     router.push({
       pathname: "/chat/[id]",
-      params: { id: chatId, initialMessage: text, selectedModel },
+      params: {
+        id: chatId,
+        initialMessage: text,
+        selectedModel,
+        useKnowledgeBase: String(useKnowledgeBase),
+      },
     })
   }
 
@@ -115,7 +121,12 @@ export default function HomeScreen() {
         <SearchInput onSubmit={handleSubmit} />
 
         {/* Toolbar */}
-        <Toolbar onModelChange={setSelectedModel} selectedModel={selectedModel} />
+        <Toolbar
+          onKnowledgeBaseChange={setUseKnowledgeBase}
+          onModelChange={setSelectedModel}
+          selectedModel={selectedModel}
+          useKnowledgeBase={useKnowledgeBase}
+        />
 
         {/* Trending Topics */}
         <TrendingCard />

@@ -12,7 +12,7 @@ export const zh = {
     aiChat: "AI 对话",
     search: "搜索",
     dashboard: "数据看板",
-    bookmarks: "所有收藏",
+    bookmarks: "收藏",
     import: "导入",
     chatHistory: "聊天记录",
     folders: "文件夹",

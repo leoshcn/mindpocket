@@ -28,7 +28,7 @@ export function FolderDetailClient({ folder }: { folder: FolderInfo }) {
           <Breadcrumb>
             <BreadcrumbList>
               <BreadcrumbItem>
-                <BreadcrumbLink href="/">所有收藏</BreadcrumbLink>
+                <BreadcrumbLink href="/">收藏</BreadcrumbLink>
               </BreadcrumbItem>
               <BreadcrumbSeparator />
               <BreadcrumbItem>
