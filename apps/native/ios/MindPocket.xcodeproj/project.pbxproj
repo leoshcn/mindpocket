@@ -7,38 +7,38 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		0213613360A4A22620AC2A83 /* PrivacyInfo.xcprivacy in Resources */ = {isa = PBXBuildFile; fileRef = 08060CFB9CEA4E5CABA1B687 /* PrivacyInfo.xcprivacy */; };
-		0FA2DEBFBAAC4CE9B41E5200 /* ShareExtensionPreprocessor.js in Resources */ = {isa = PBXBuildFile; fileRef = 13EC6B44BD6840D3A7F66FF7 /* ShareExtensionPreprocessor.js */; };
 		13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB51A68108700A75B9A /* Images.xcassets */; };
-		13D4F61BB00C49E895D88BF0 /* ShareViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDDDE4BA516943E18B9C8A56 /* ShareViewController.swift */; };
+		3DC736BCB087496F81DFE11A /* ShareViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78BC686B6EF0476AB065077B /* ShareViewController.swift */; };
 		3E461D99554A48A4959DE609 /* SplashScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AA286B85B6C04FC6940260E9 /* SplashScreen.storyboard */; };
-		8840182101EB4788B32A125A /* ShareExtension.appex in Copy Files */ = {isa = PBXBuildFile; fileRef = 497DDC0582E24AD9AD278926 /* ShareExtension.appex */; };
-		99CAF7A5DC284A3E87FCF029 /* PrivacyInfo.xcprivacy in Resources */ = {isa = PBXBuildFile; fileRef = 08060CFB9CEA4E5CABA1B687 /* PrivacyInfo.xcprivacy */; };
-		A21B36C959984D6C9E4DBBF3 /* MainInterface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4667846040E542E8B5AED264 /* MainInterface.storyboard */; };
+		466ADC99CC89498CB1163029 /* ShareExtensionPreprocessor.js in Resources */ = {isa = PBXBuildFile; fileRef = 1062117728774E0ABEAB22DB /* ShareExtensionPreprocessor.js */; };
+		573C8B266D6A494A91E61346 /* MainInterface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5D40F937FDDA4FD4B5393709 /* MainInterface.storyboard */; };
+		5C6A4DB7016135BDE2E71AC7 /* libPods-MindPocket.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 518ACED8987EA3A1865AB60C /* libPods-MindPocket.a */; };
+		89D2AE4C58E5EE286BF257D0 /* PrivacyInfo.xcprivacy in Resources */ = {isa = PBXBuildFile; fileRef = CDCABB35287E4972AE9B01D1 /* PrivacyInfo.xcprivacy */; };
+		B1D183CAB62A42A98E07B609 /* PrivacyInfo.xcprivacy in Resources */ = {isa = PBXBuildFile; fileRef = CDCABB35287E4972AE9B01D1 /* PrivacyInfo.xcprivacy */; };
 		BB2F792D24A3F905000567C9 /* Expo.plist in Resources */ = {isa = PBXBuildFile; fileRef = BB2F792C24A3F905000567C9 /* Expo.plist */; };
-		BB679D8AC6FB858B33981BF5 /* libPods-native.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 46BD25B9274B5C363A4BBC89 /* libPods-native.a */; };
+		E29895C0FCFAF0ADA04EC2C9 /* ExpoModulesProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94D2F17D222D3F62BD31B91F /* ExpoModulesProvider.swift */; };
 		F11748422D0307B40044C1D9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F11748412D0307B40044C1D9 /* AppDelegate.swift */; };
-		F594C96DAF42F9171DB4E1F7 /* ExpoModulesProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C70D9F4C58D065E82D6A61B /* ExpoModulesProvider.swift */; };
+		F19231B991A54D699799577B /* MindPocketShare.appex in Copy Files */ = {isa = PBXBuildFile; fileRef = 8B09C0ABB52D47B6A61AB245 /* MindPocketShare.appex */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		001AF65875F7452BBDA5C4EB /* PBXContainerItemProxy */ = {
+		F4753E4C2A5D43DB951894E6 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 83CBB9F71A601CBA00E9B192 /* Project object */;
 			proxyType = 1;
-			remoteGlobalIDString = 28490CD694724F4DA0E991A0;
-			remoteInfo = ShareExtension;
+			remoteGlobalIDString = D57F9D153B9741E49A4FE34F;
+			remoteInfo = MindPocketShare;
 		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
-		1FD984A9C77E4DBAB94C2A2A /* Copy Files */ = {
+		C270CE1AB3F04A6ABB27C677 /* Copy Files */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
 			dstPath = "";
 			dstSubfolderSpec = 13;
 			files = (
-				8840182101EB4788B32A125A /* ShareExtension.appex in Copy Files */,
+				F19231B991A54D699799577B /* MindPocketShare.appex in Copy Files */,
 			);
 			name = "Copy Files";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -46,25 +46,25 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		08060CFB9CEA4E5CABA1B687 /* PrivacyInfo.xcprivacy */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; path = PrivacyInfo.xcprivacy; sourceTree = "<group>"; };
-		13B07F961A680F5B00A75B9A /* native.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = native.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		13B07FB51A68108700A75B9A /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = native/Images.xcassets; sourceTree = "<group>"; };
-		13B07FB61A68108700A75B9A /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = native/Info.plist; sourceTree = "<group>"; };
-		13EC6B44BD6840D3A7F66FF7 /* ShareExtensionPreprocessor.js */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; path = ShareExtensionPreprocessor.js; sourceTree = "<group>"; };
-		24F620A9E03B2D0D1FE7BE5F /* Pods-native.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-native.release.xcconfig"; path = "Target Support Files/Pods-native/Pods-native.release.xcconfig"; sourceTree = "<group>"; };
-		3D216734A9D843E1808BDF3B /* ShareExtension-Info.plist */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 4; includeInIndex = 0; lastKnownFileType = text.plist.xml; path = "ShareExtension-Info.plist"; sourceTree = "<group>"; };
-		4667846040E542E8B5AED264 /* MainInterface.storyboard */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; path = MainInterface.storyboard; sourceTree = "<group>"; };
-		46BD25B9274B5C363A4BBC89 /* libPods-native.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-native.a"; sourceTree = BUILT_PRODUCTS_DIR; };
-		497DDC0582E24AD9AD278926 /* ShareExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; fileEncoding = 9; includeInIndex = 0; path = ShareExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
-		8C70D9F4C58D065E82D6A61B /* ExpoModulesProvider.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ExpoModulesProvider.swift; path = "Pods/Target Support Files/Pods-native/ExpoModulesProvider.swift"; sourceTree = "<group>"; };
-		AA286B85B6C04FC6940260E9 /* SplashScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = SplashScreen.storyboard; path = native/SplashScreen.storyboard; sourceTree = "<group>"; };
-		BA9646311B62486397342D65 /* ShareExtension.entitlements */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; path = ShareExtension.entitlements; sourceTree = "<group>"; };
+		080BE121ADA2EC34186D49E2 /* Pods-MindPocket.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MindPocket.debug.xcconfig"; path = "Target Support Files/Pods-MindPocket/Pods-MindPocket.debug.xcconfig"; sourceTree = "<group>"; };
+		1062117728774E0ABEAB22DB /* ShareExtensionPreprocessor.js */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; path = ShareExtensionPreprocessor.js; sourceTree = "<group>"; };
+		13B07F961A680F5B00A75B9A /* MindPocket.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MindPocket.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		13B07FB51A68108700A75B9A /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = MindPocket/Images.xcassets; sourceTree = "<group>"; };
+		13B07FB61A68108700A75B9A /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = MindPocket/Info.plist; sourceTree = "<group>"; };
+		460939260AACE97EB0C593FB /* Pods-MindPocket.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MindPocket.release.xcconfig"; path = "Target Support Files/Pods-MindPocket/Pods-MindPocket.release.xcconfig"; sourceTree = "<group>"; };
+		518ACED8987EA3A1865AB60C /* libPods-MindPocket.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-MindPocket.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		5D40F937FDDA4FD4B5393709 /* MainInterface.storyboard */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; path = MainInterface.storyboard; sourceTree = "<group>"; };
+		78BC686B6EF0476AB065077B /* ShareViewController.swift */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 4; includeInIndex = 0; lastKnownFileType = sourcecode.swift; path = ShareViewController.swift; sourceTree = "<group>"; };
+		8B09C0ABB52D47B6A61AB245 /* MindPocketShare.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; fileEncoding = 9; includeInIndex = 0; path = MindPocketShare.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		94D2F17D222D3F62BD31B91F /* ExpoModulesProvider.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ExpoModulesProvider.swift; path = "Pods/Target Support Files/Pods-MindPocket/ExpoModulesProvider.swift"; sourceTree = "<group>"; };
+		AA286B85B6C04FC6940260E9 /* SplashScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = SplashScreen.storyboard; path = MindPocket/SplashScreen.storyboard; sourceTree = "<group>"; };
 		BB2F792C24A3F905000567C9 /* Expo.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Expo.plist; sourceTree = "<group>"; };
+		C10482EC016D4857A309B8EB /* ShareExtension.entitlements */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; path = ShareExtension.entitlements; sourceTree = "<group>"; };
+		CDCABB35287E4972AE9B01D1 /* PrivacyInfo.xcprivacy */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; path = PrivacyInfo.xcprivacy; sourceTree = "<group>"; };
 		ED297162215061F000B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
-		F11748412D0307B40044C1D9 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AppDelegate.swift; path = native/AppDelegate.swift; sourceTree = "<group>"; };
-		F11748442D0722820044C1D9 /* native-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "native-Bridging-Header.h"; path = "native/native-Bridging-Header.h"; sourceTree = "<group>"; };
-		FD45765103944FAA582AEE89 /* Pods-native.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-native.debug.xcconfig"; path = "Target Support Files/Pods-native/Pods-native.debug.xcconfig"; sourceTree = "<group>"; };
-		FDDDE4BA516943E18B9C8A56 /* ShareViewController.swift */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 4; includeInIndex = 0; lastKnownFileType = sourcecode.swift; path = ShareViewController.swift; sourceTree = "<group>"; };
+		F11748412D0307B40044C1D9 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AppDelegate.swift; path = MindPocket/AppDelegate.swift; sourceTree = "<group>"; };
+		F11748442D0722820044C1D9 /* MindPocket-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "MindPocket-Bridging-Header.h"; path = "MindPocket/MindPocket-Bridging-Header.h"; sourceTree = "<group>"; };
+		FE93A0546EC640179263F424 /* ShareExtension-Info.plist */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 4; includeInIndex = 0; lastKnownFileType = text.plist.xml; path = "ShareExtension-Info.plist"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -72,11 +72,11 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				BB679D8AC6FB858B33981BF5 /* libPods-native.a in Frameworks */,
+				5C6A4DB7016135BDE2E71AC7 /* libPods-MindPocket.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		82D75CB615444B4EBC921EA7 /* Frameworks */ = {
+		42ABD10027874F419D542370 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -86,55 +86,56 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		13B07FAE1A68108700A75B9A /* native */ = {
+		00D8F7279A2E857E24B6A011 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				080BE121ADA2EC34186D49E2 /* Pods-MindPocket.debug.xcconfig */,
+				460939260AACE97EB0C593FB /* Pods-MindPocket.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
+		13B07FAE1A68108700A75B9A /* MindPocket */ = {
 			isa = PBXGroup;
 			children = (
 				F11748412D0307B40044C1D9 /* AppDelegate.swift */,
-				F11748442D0722820044C1D9 /* native-Bridging-Header.h */,
+				F11748442D0722820044C1D9 /* MindPocket-Bridging-Header.h */,
 				BB2F792B24A3F905000567C9 /* Supporting */,
 				13B07FB51A68108700A75B9A /* Images.xcassets */,
 				13B07FB61A68108700A75B9A /* Info.plist */,
 				AA286B85B6C04FC6940260E9 /* SplashScreen.storyboard */,
 			);
-			name = native;
+			name = MindPocket;
 			sourceTree = "<group>";
 		};
 		2D16E6871FA4F8E400B85C8A /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
 				ED297162215061F000B7C4FE /* JavaScriptCore.framework */,
-				46BD25B9274B5C363A4BBC89 /* libPods-native.a */,
+				518ACED8987EA3A1865AB60C /* libPods-MindPocket.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		365B1C52C0644FB49EF79FC0 /* ShareExtension */ = {
+		343D5B4B6D6F134AD57DB440 /* MindPocket */ = {
 			isa = PBXGroup;
 			children = (
-				FDDDE4BA516943E18B9C8A56 /* ShareViewController.swift */,
-				4667846040E542E8B5AED264 /* MainInterface.storyboard */,
-				13EC6B44BD6840D3A7F66FF7 /* ShareExtensionPreprocessor.js */,
-				08060CFB9CEA4E5CABA1B687 /* PrivacyInfo.xcprivacy */,
-				3D216734A9D843E1808BDF3B /* ShareExtension-Info.plist */,
-				BA9646311B62486397342D65 /* ShareExtension.entitlements */,
+				94D2F17D222D3F62BD31B91F /* ExpoModulesProvider.swift */,
 			);
-			path = ShareExtension;
+			name = MindPocket;
 			sourceTree = "<group>";
 		};
-		4F04742CF6185D3E2A6CC7D1 /* ExpoModulesProviders */ = {
+		3E24C762AC494779A6B43306 /* MindPocketShare */ = {
 			isa = PBXGroup;
 			children = (
-				63D09DFCF5FCEE559735A4AA /* native */,
+				78BC686B6EF0476AB065077B /* ShareViewController.swift */,
+				5D40F937FDDA4FD4B5393709 /* MainInterface.storyboard */,
+				1062117728774E0ABEAB22DB /* ShareExtensionPreprocessor.js */,
+				CDCABB35287E4972AE9B01D1 /* PrivacyInfo.xcprivacy */,
+				FE93A0546EC640179263F424 /* ShareExtension-Info.plist */,
+				C10482EC016D4857A309B8EB /* ShareExtension.entitlements */,
 			);
-			name = ExpoModulesProviders;
-			sourceTree = "<group>";
-		};
-		63D09DFCF5FCEE559735A4AA /* native */ = {
-			isa = PBXGroup;
-			children = (
-				8C70D9F4C58D065E82D6A61B /* ExpoModulesProvider.swift */,
-			);
-			name = native;
+			path = MindPocketShare;
 			sourceTree = "<group>";
 		};
 		832341AE1AAA6A7D00B99B32 /* Libraries */ = {
@@ -147,13 +148,13 @@
 		83CBB9F61A601CBA00E9B192 = {
 			isa = PBXGroup;
 			children = (
-				13B07FAE1A68108700A75B9A /* native */,
+				13B07FAE1A68108700A75B9A /* MindPocket */,
 				832341AE1AAA6A7D00B99B32 /* Libraries */,
 				83CBBA001A601CBA00E9B192 /* Products */,
 				2D16E6871FA4F8E400B85C8A /* Frameworks */,
-				365B1C52C0644FB49EF79FC0 /* ShareExtension */,
-				F008E4A3604DF7B5E84FD088 /* Pods */,
-				4F04742CF6185D3E2A6CC7D1 /* ExpoModulesProviders */,
+				3E24C762AC494779A6B43306 /* MindPocketShare */,
+				00D8F7279A2E857E24B6A011 /* Pods */,
+				C9605BA30DC59F88AAF4E275 /* ExpoModulesProviders */,
 			);
 			indentWidth = 2;
 			sourceTree = "<group>";
@@ -163,8 +164,8 @@
 		83CBBA001A601CBA00E9B192 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				13B07F961A680F5B00A75B9A /* native.app */,
-				497DDC0582E24AD9AD278926 /* ShareExtension.appex */,
+				13B07F961A680F5B00A75B9A /* MindPocket.app */,
+				8B09C0ABB52D47B6A61AB245 /* MindPocketShare.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -175,60 +176,59 @@
 				BB2F792C24A3F905000567C9 /* Expo.plist */,
 			);
 			name = Supporting;
-			path = native/Supporting;
+			path = MindPocket/Supporting;
 			sourceTree = "<group>";
 		};
-		F008E4A3604DF7B5E84FD088 /* Pods */ = {
+		C9605BA30DC59F88AAF4E275 /* ExpoModulesProviders */ = {
 			isa = PBXGroup;
 			children = (
-				FD45765103944FAA582AEE89 /* Pods-native.debug.xcconfig */,
-				24F620A9E03B2D0D1FE7BE5F /* Pods-native.release.xcconfig */,
+				343D5B4B6D6F134AD57DB440 /* MindPocket */,
 			);
-			path = Pods;
+			name = ExpoModulesProviders;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		13B07F861A680F5B00A75B9A /* native */ = {
+		13B07F861A680F5B00A75B9A /* MindPocket */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 13B07F931A680F5B00A75B9A /* Build configuration list for PBXNativeTarget "native" */;
+			buildConfigurationList = 13B07F931A680F5B00A75B9A /* Build configuration list for PBXNativeTarget "MindPocket" */;
 			buildPhases = (
 				08A4A3CD28434E44B6B9DE2E /* [CP] Check Pods Manifest.lock */,
-				14DAED2A74690639F3ADF92B /* [Expo] Configure project */,
+				6FE433BF84939FB3BA6B51FE /* [Expo] Configure project */,
 				13B07F871A680F5B00A75B9A /* Sources */,
 				13B07F8C1A680F5B00A75B9A /* Frameworks */,
 				13B07F8E1A680F5B00A75B9A /* Resources */,
 				00DD1BFF1BD5951E006B06BC /* Bundle React Native code and images */,
 				800E24972A6A228C8D4807E9 /* [CP] Copy Pods Resources */,
-				1FD984A9C77E4DBAB94C2A2A /* Copy Files */,
-				EBC1F50F913CB35CB205785F /* [CP] Embed Pods Frameworks */,
+				C270CE1AB3F04A6ABB27C677 /* Copy Files */,
+				1B5D228B5108DB1935B665F7 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
 			dependencies = (
-				3F4B2B8A72934BB0A07CFA66 /* PBXTargetDependency */,
+				A02C0E90E7EA4F5C9A56019A /* PBXTargetDependency */,
 			);
-			name = native;
-			productName = native;
-			productReference = 13B07F961A680F5B00A75B9A /* native.app */;
+			name = MindPocket;
+			productName = MindPocket;
+			productReference = 13B07F961A680F5B00A75B9A /* MindPocket.app */;
 			productType = "com.apple.product-type.application";
 		};
-		28490CD694724F4DA0E991A0 /* ShareExtension */ = {
+		D57F9D153B9741E49A4FE34F /* MindPocketShare */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 5372C8BA19A14647B41A4C40 /* Build configuration list for PBXNativeTarget "ShareExtension" */;
+			buildConfigurationList = 80244D3413F142D2A61DD0FE /* Build configuration list for PBXNativeTarget "MindPocketShare" */;
 			buildPhases = (
-				36C19B19DCBE4699A8046ECB /* Sources */,
-				A2F7CDC25D5A4CA681574F77 /* Resources */,
-				82D75CB615444B4EBC921EA7 /* Frameworks */,
+				A376D4DC2BAB445385E86D7C /* Sources */,
+				CCAD45D61AE749F5AB2ED582 /* Resources */,
+				42ABD10027874F419D542370 /* Frameworks */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 			);
-			name = ShareExtension;
-			productName = ShareExtension;
-			productReference = 497DDC0582E24AD9AD278926 /* ShareExtension.appex */;
+			name = MindPocketShare;
+			productName = MindPocketShare;
+			productReference = 8B09C0ABB52D47B6A61AB245 /* MindPocketShare.appex */;
 			productType = "com.apple.product-type.app-extension";
 		};
 /* End PBXNativeTarget section */
@@ -240,11 +240,17 @@
 				LastUpgradeCheck = 1130;
 				TargetAttributes = {
 					13B07F861A680F5B00A75B9A = {
+						DevelopmentTeam = 5PR9GD46M8;
 						LastSwiftMigration = 1250;
+						ProvisioningStyle = Automatic;
+					};
+					D57F9D153B9741E49A4FE34F = {
+						DevelopmentTeam = 5PR9GD46M8;
+						ProvisioningStyle = Automatic;
 					};
 				};
 			};
-			buildConfigurationList = 83CBB9FA1A601CBA00E9B192 /* Build configuration list for PBXProject "native" */;
+			buildConfigurationList = 83CBB9FA1A601CBA00E9B192 /* Build configuration list for PBXProject "MindPocket" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -257,8 +263,8 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				13B07F861A680F5B00A75B9A /* native */,
-				28490CD694724F4DA0E991A0 /* ShareExtension */,
+				13B07F861A680F5B00A75B9A /* MindPocket */,
+				D57F9D153B9741E49A4FE34F /* MindPocketShare */,
 			);
 		};
 /* End PBXProject section */
@@ -271,17 +277,17 @@
 				BB2F792D24A3F905000567C9 /* Expo.plist in Resources */,
 				13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */,
 				3E461D99554A48A4959DE609 /* SplashScreen.storyboard in Resources */,
-				0213613360A4A22620AC2A83 /* PrivacyInfo.xcprivacy in Resources */,
+				89D2AE4C58E5EE286BF257D0 /* PrivacyInfo.xcprivacy in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		A2F7CDC25D5A4CA681574F77 /* Resources */ = {
+		CCAD45D61AE749F5AB2ED582 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A21B36C959984D6C9E4DBBF3 /* MainInterface.storyboard in Resources */,
-				0FA2DEBFBAAC4CE9B41E5200 /* ShareExtensionPreprocessor.js in Resources */,
-				99CAF7A5DC284A3E87FCF029 /* PrivacyInfo.xcprivacy in Resources */,
+				573C8B266D6A494A91E61346 /* MainInterface.storyboard in Resources */,
+				466ADC99CC89498CB1163029 /* ShareExtensionPreprocessor.js in Resources */,
+				B1D183CAB62A42A98E07B609 /* PrivacyInfo.xcprivacy in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -320,14 +326,36 @@
 			outputFileListPaths = (
 			);
 			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-native-checkManifestLockResult.txt",
+				"$(DERIVED_FILE_DIR)/Pods-MindPocket-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
-		14DAED2A74690639F3ADF92B /* [Expo] Configure project */ = {
+		1B5D228B5108DB1935B665F7 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-MindPocket/Pods-MindPocket-frameworks.sh",
+				"${PODS_XCFRAMEWORKS_BUILD_DIR}/React-Core-prebuilt/React.framework/React",
+				"${PODS_XCFRAMEWORKS_BUILD_DIR}/ReactNativeDependencies/ReactNativeDependencies.framework/ReactNativeDependencies",
+				"${PODS_XCFRAMEWORKS_BUILD_DIR}/hermes-engine/Pre-built/hermes.framework/hermes",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/React.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ReactNativeDependencies.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/hermes.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-MindPocket/Pods-MindPocket-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		6FE433BF84939FB3BA6B51FE /* [Expo] Configure project */ = {
 			isa = PBXShellScriptBuildPhase;
 			alwaysOutOfDate = 1;
 			buildActionMask = 2147483647;
@@ -338,18 +366,18 @@
 			inputPaths = (
 				"$(SRCROOT)/.xcode.env",
 				"$(SRCROOT)/.xcode.env.local",
-				"$(SRCROOT)/native/native.entitlements",
-				"$(SRCROOT)/Pods/Target Support Files/Pods-native/expo-configure-project.sh",
+				"$(SRCROOT)/MindPocket/MindPocket.entitlements",
+				"$(SRCROOT)/Pods/Target Support Files/Pods-MindPocket/expo-configure-project.sh",
 			);
 			name = "[Expo] Configure project";
 			outputFileListPaths = (
 			);
 			outputPaths = (
-				"$(SRCROOT)/Pods/Target Support Files/Pods-native/ExpoModulesProvider.swift",
+				"$(SRCROOT)/Pods/Target Support Files/Pods-MindPocket/ExpoModulesProvider.swift",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "# This script configures Expo modules and generates the modules provider file.\nbash -l -c \"./Pods/Target\\ Support\\ Files/Pods-native/expo-configure-project.sh\"\n";
+			shellScript = "# This script configures Expo modules and generates the modules provider file.\nbash -l -c \"./Pods/Target\\ Support\\ Files/Pods-MindPocket/expo-configure-project.sh\"\n";
 		};
 		800E24972A6A228C8D4807E9 /* [CP] Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -357,7 +385,7 @@
 			files = (
 			);
 			inputPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-native/Pods-native-resources.sh",
+				"${PODS_ROOT}/Target Support Files/Pods-MindPocket/Pods-MindPocket-resources.sh",
 				"${PODS_CONFIGURATION_BUILD_DIR}/EXConstants/EXConstants.bundle",
 				"${PODS_CONFIGURATION_BUILD_DIR}/EXConstants/ExpoConstants_privacy.bundle",
 				"${PODS_CONFIGURATION_BUILD_DIR}/ExpoFileSystem/ExpoFileSystem_privacy.bundle",
@@ -378,29 +406,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-native/Pods-native-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		EBC1F50F913CB35CB205785F /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-native/Pods-native-frameworks.sh",
-				"${PODS_XCFRAMEWORKS_BUILD_DIR}/React-Core-prebuilt/React.framework/React",
-				"${PODS_XCFRAMEWORKS_BUILD_DIR}/ReactNativeDependencies/ReactNativeDependencies.framework/ReactNativeDependencies",
-				"${PODS_XCFRAMEWORKS_BUILD_DIR}/hermes-engine/Pre-built/hermes.framework/hermes",
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputPaths = (
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/React.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ReactNativeDependencies.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/hermes.framework",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-native/Pods-native-frameworks.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-MindPocket/Pods-MindPocket-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -411,36 +417,38 @@
 			buildActionMask = 2147483647;
 			files = (
 				F11748422D0307B40044C1D9 /* AppDelegate.swift in Sources */,
-				F594C96DAF42F9171DB4E1F7 /* ExpoModulesProvider.swift in Sources */,
+				E29895C0FCFAF0ADA04EC2C9 /* ExpoModulesProvider.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		36C19B19DCBE4699A8046ECB /* Sources */ = {
+		A376D4DC2BAB445385E86D7C /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				13D4F61BB00C49E895D88BF0 /* ShareViewController.swift in Sources */,
+				3DC736BCB087496F81DFE11A /* ShareViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		3F4B2B8A72934BB0A07CFA66 /* PBXTargetDependency */ = {
+		A02C0E90E7EA4F5C9A56019A /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 28490CD694724F4DA0E991A0 /* ShareExtension */;
-			targetProxy = 001AF65875F7452BBDA5C4EB /* PBXContainerItemProxy */;
+			target = D57F9D153B9741E49A4FE34F /* MindPocketShare */;
+			targetProxy = F4753E4C2A5D43DB951894E6 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
 		13B07F941A680F5B00A75B9A /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = FD45765103944FAA582AEE89 /* Pods-native.debug.xcconfig */;
+			baseConfigurationReference = 080BE121ADA2EC34186D49E2 /* Pods-MindPocket.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
-				CODE_SIGN_ENTITLEMENTS = native/native.entitlements;
+				CODE_SIGN_ENTITLEMENTS = MindPocket/MindPocket.entitlements;
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 5PR9GD46M8;
 				ENABLE_BITCODE = NO;
@@ -448,7 +456,7 @@
 					"$(inherited)",
 					"FB_SONARKIT_ENABLED=1",
 				);
-				INFOPLIST_FILE = native/Info.plist;
+				INFOPLIST_FILE = MindPocket/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 15.1;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -461,9 +469,9 @@
 					"-lc++",
 				);
 				OTHER_SWIFT_FLAGS = "$(inherited) -D EXPO_CONFIGURATION_DEBUG";
-				PRODUCT_BUNDLE_IDENTIFIER = com.turbo.sanjin;
-				PRODUCT_NAME = native;
-				SWIFT_OBJC_BRIDGING_HEADER = "native/native-Bridging-Header.h";
+				PRODUCT_BUNDLE_IDENTIFIER = com.mindpocket.app;
+				PRODUCT_NAME = MindPocket;
+				SWIFT_OBJC_BRIDGING_HEADER = "MindPocket/MindPocket-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -473,14 +481,16 @@
 		};
 		13B07F951A680F5B00A75B9A /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 24F620A9E03B2D0D1FE7BE5F /* Pods-native.release.xcconfig */;
+			baseConfigurationReference = 460939260AACE97EB0C593FB /* Pods-MindPocket.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
-				CODE_SIGN_ENTITLEMENTS = native/native.entitlements;
+				CODE_SIGN_ENTITLEMENTS = MindPocket/MindPocket.entitlements;
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 5PR9GD46M8;
-				INFOPLIST_FILE = native/Info.plist;
+				INFOPLIST_FILE = MindPocket/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 15.1;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -493,26 +503,27 @@
 					"-lc++",
 				);
 				OTHER_SWIFT_FLAGS = "$(inherited) -D EXPO_CONFIGURATION_RELEASE";
-				PRODUCT_BUNDLE_IDENTIFIER = com.turbo.sanjin;
-				PRODUCT_NAME = native;
-				SWIFT_OBJC_BRIDGING_HEADER = "native/native-Bridging-Header.h";
+				PRODUCT_BUNDLE_IDENTIFIER = com.mindpocket.app;
+				PRODUCT_NAME = MindPocket;
+				SWIFT_OBJC_BRIDGING_HEADER = "MindPocket/MindPocket-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VERSIONING_SYSTEM = "apple-generic";
 			};
 			name = Release;
 		};
-		2F407185759D492BA20ACD14 /* Release */ = {
+		75EF746253F749F0A0FFB898 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CLANG_ENABLE_MODULES = YES;
-				CODE_SIGN_ENTITLEMENTS = ShareExtension/ShareExtension.entitlements;
+				CODE_SIGN_ENTITLEMENTS = MindPocketShare/ShareExtension.entitlements;
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 5PR9GD46M8;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = "ShareExtension/ShareExtension-Info.plist";
-				INFOPLIST_KEY_CFBundleDisplayName = "native - Share Extension";
+				INFOPLIST_FILE = "MindPocketShare/ShareExtension-Info.plist";
+				INFOPLIST_KEY_CFBundleDisplayName = "MindPocket Share";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -520,14 +531,46 @@
 				);
 				MARKETING_VERSION = 1.0.0;
 				OTHER_SWIFT_FLAGS = "$(inherited) -D EXPO_CONFIGURATION_RELEASE";
-				PRODUCT_BUNDLE_IDENTIFIER = "com.turbo.sanjin.share-extension";
-				PRODUCT_NAME = ShareExtension;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.mindpocket.app.share-extension";
+				PRODUCT_NAME = MindPocketShare;
 				SKIP_INSTALL = YES;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
+		};
+		77271B1D74D04BF08562663D /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_ENTITLEMENTS = MindPocketShare/ShareExtension.entitlements;
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 5PR9GD46M8;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "MindPocketShare/ShareExtension-Info.plist";
+				INFOPLIST_KEY_CFBundleDisplayName = "MindPocket Share";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = 1.0.0;
+				OTHER_SWIFT_FLAGS = "$(inherited) -D EXPO_CONFIGURATION_DEBUG";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.mindpocket.app.share-extension";
+				PRODUCT_NAME = MindPocketShare;
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
 		};
 		83CBBA201A601CBA00E9B192 /* Debug */ = {
 			isa = XCBuildConfiguration;
@@ -584,7 +627,7 @@
 				LIBRARY_SEARCH_PATHS = "$(SDKROOT)/usr/lib/swift\"$(inherited)\"";
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
-				REACT_NATIVE_PATH = "${PODS_ROOT}/../../../../node_modules/.pnpm/react-native@0.81.5_@babel+core@7.29.0_@types+react@19.1.17_react@19.1.0/node_modules/react-native";
+				REACT_NATIVE_PATH = "${PODS_ROOT}/../../../../node_modules/.pnpm/react-native@0.81.5_@babel+core@7.29.0_@types+react@19.2.13_react@19.1.0/node_modules/react-native";
 				SDKROOT = iphoneos;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) DEBUG";
 				SWIFT_ENABLE_EXPLICIT_MODULES = NO;
@@ -639,7 +682,7 @@
 				);
 				LIBRARY_SEARCH_PATHS = "$(SDKROOT)/usr/lib/swift\"$(inherited)\"";
 				MTL_ENABLE_DEBUG_INFO = NO;
-				REACT_NATIVE_PATH = "${PODS_ROOT}/../../../../node_modules/.pnpm/react-native@0.81.5_@babel+core@7.29.0_@types+react@19.1.17_react@19.1.0/node_modules/react-native";
+				REACT_NATIVE_PATH = "${PODS_ROOT}/../../../../node_modules/.pnpm/react-native@0.81.5_@babel+core@7.29.0_@types+react@19.2.13_react@19.1.0/node_modules/react-native";
 				SDKROOT = iphoneos;
 				SWIFT_ENABLE_EXPLICIT_MODULES = NO;
 				USE_HERMES = true;
@@ -647,41 +690,10 @@
 			};
 			name = Release;
 		};
-		88ED393ADAE24F6E90DCD959 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				CLANG_ENABLE_MODULES = YES;
-				CODE_SIGN_ENTITLEMENTS = ShareExtension/ShareExtension.entitlements;
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 5PR9GD46M8;
-				GCC_PREPROCESSOR_DEFINITIONS = (
-					"DEBUG=1",
-					"$(inherited)",
-				);
-				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = "ShareExtension/ShareExtension-Info.plist";
-				INFOPLIST_KEY_CFBundleDisplayName = "native - Share Extension";
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@executable_path/../../Frameworks",
-				);
-				MARKETING_VERSION = 1.0.0;
-				OTHER_SWIFT_FLAGS = "$(inherited) -D EXPO_CONFIGURATION_DEBUG";
-				PRODUCT_BUNDLE_IDENTIFIER = "com.turbo.sanjin.share-extension";
-				PRODUCT_NAME = ShareExtension;
-				SKIP_INSTALL = YES;
-				SWIFT_EMIT_LOC_STRINGS = YES;
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-			};
-			name = Debug;
-		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		13B07F931A680F5B00A75B9A /* Build configuration list for PBXNativeTarget "native" */ = {
+		13B07F931A680F5B00A75B9A /* Build configuration list for PBXNativeTarget "MindPocket" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				13B07F941A680F5B00A75B9A /* Debug */,
@@ -690,16 +702,16 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		5372C8BA19A14647B41A4C40 /* Build configuration list for PBXNativeTarget "ShareExtension" */ = {
+		80244D3413F142D2A61DD0FE /* Build configuration list for PBXNativeTarget "MindPocketShare" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				88ED393ADAE24F6E90DCD959 /* Debug */,
-				2F407185759D492BA20ACD14 /* Release */,
+				77271B1D74D04BF08562663D /* Debug */,
+				75EF746253F749F0A0FFB898 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		83CBB9FA1A601CBA00E9B192 /* Build configuration list for PBXProject "native" */ = {
+		83CBB9FA1A601CBA00E9B192 /* Build configuration list for PBXProject "MindPocket" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				83CBBA201A601CBA00E9B192 /* Debug */,

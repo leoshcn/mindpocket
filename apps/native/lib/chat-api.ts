@@ -1,7 +1,7 @@
 import type { UIMessage } from "ai"
 import { getItem } from "expo-secure-store"
+import { getServerUrl } from "./server-config"
 
-const API_URL = process.env.EXPO_PUBLIC_API_URL || "http://127.0.0.1:3000"
 const IS_WEB = typeof document !== "undefined"
 
 export class ChatApiError extends Error {
@@ -62,7 +62,7 @@ function createHeaders(extra?: Record<string, string>): Record<string, string> {
 }
 
 async function requestJson<T>(path: string, init?: RequestInit): Promise<T> {
-  const response = await fetch(`${API_URL}${path}`, {
+  const response = await fetch(`${getServerUrl()}${path}`, {
     ...init,
     credentials: "include",
     headers: createHeaders((init?.headers || undefined) as Record<string, string> | undefined),
@@ -77,7 +77,7 @@ async function requestJson<T>(path: string, init?: RequestInit): Promise<T> {
 }
 
 async function requestVoid(path: string, init?: RequestInit): Promise<void> {
-  const response = await fetch(`${API_URL}${path}`, {
+  const response = await fetch(`${getServerUrl()}${path}`, {
     ...init,
     credentials: "include",
     headers: createHeaders((init?.headers || undefined) as Record<string, string> | undefined),

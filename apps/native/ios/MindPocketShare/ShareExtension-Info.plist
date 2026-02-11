@@ -3,7 +3,7 @@
 <plist version="1.0">
 <dict>
 	<key>AppGroupIdentifier</key>
-	<string>group.com.turbo.sanjin</string>
+	<string>group.com.turbo.example</string>
 	<key>NSExtension</key>
 	<dict>
 		<key>NSExtensionAttributes</key>

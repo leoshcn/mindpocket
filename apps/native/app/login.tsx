@@ -12,12 +12,14 @@ import {
   View,
 } from "react-native"
 import { useSafeAreaInsets } from "react-native-safe-area-context"
-import { authClient } from "@/lib/auth-client"
+import { useAuth } from "@/lib/auth-context"
 
 export default function LoginScreen() {
   const insets = useSafeAreaInsets()
   const router = useRouter()
+  const { authClient, serverUrl, switchServer } = useAuth()
   const { data: session } = authClient.useSession()
+  const [server, setServer] = useState(serverUrl)
   const [email, setEmail] = useState("")
   const [password, setPassword] = useState("")
   const [loading, setLoading] = useState(false)
@@ -29,13 +31,17 @@ export default function LoginScreen() {
   }, [session, router])
 
   const handleLogin = async () => {
-    if (!(email.trim() && password.trim())) {
-      Alert.alert("提示", "请输入邮箱和密码")
+    if (!(server.trim() && email.trim() && password.trim())) {
+      Alert.alert("提示", "请输入服务器地址、邮箱和密码")
       return
     }
 
     setLoading(true)
     try {
+      if (server.trim() !== serverUrl) {
+        await switchServer(server.trim())
+      }
+
       const { error } = await authClient.signIn.email({
         email: email.trim(),
         password,
@@ -62,6 +68,17 @@ export default function LoginScreen() {
       <View style={[styles.content, { paddingTop: insets.top, paddingBottom: insets.bottom }]}>
         <Text style={styles.title}>MindPocket</Text>
         <Text style={styles.subtitle}>登录以继续</Text>
+
+        <Text style={styles.label}>服务器地址</Text>
+        <TextInput
+          autoCapitalize="none"
+          autoCorrect={false}
+          keyboardType="url"
+          onChangeText={setServer}
+          placeholder="https://your-server.com"
+          style={styles.input}
+          value={server}
+        />
 
         <Text style={styles.label}>邮箱</Text>
         <TextInput

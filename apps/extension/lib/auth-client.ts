@@ -1,6 +1,16 @@
-const API_BASE = import.meta.env.WXT_API_BASE || "http://127.0.0.1:3000"
+const DEFAULT_SERVER = import.meta.env.WXT_API_BASE || "http://127.0.0.1:3000"
+const SERVER_KEY = "mindpocket_server"
 const TOKEN_KEY = "mindpocket_token"
 const USER_KEY = "mindpocket_user"
+
+export async function getServerUrl(): Promise<string> {
+  const result = await chrome.storage.local.get(SERVER_KEY)
+  return result[SERVER_KEY] || DEFAULT_SERVER
+}
+
+export async function setServerUrl(url: string): Promise<void> {
+  await chrome.storage.local.set({ [SERVER_KEY]: url })
+}
 
 export async function getToken(): Promise<string | null> {
   const result = await chrome.storage.local.get(TOKEN_KEY)
@@ -34,6 +44,7 @@ export async function removeCachedUser(): Promise<void> {
 
 async function authFetch(path: string, options: RequestInit = {}) {
   const token = await getToken()
+  const baseUrl = await getServerUrl()
   const headers: Record<string, string> = {
     "Content-Type": "application/json",
     ...(options.headers as Record<string, string>),
@@ -41,7 +52,7 @@ async function authFetch(path: string, options: RequestInit = {}) {
   if (token) {
     headers.Authorization = `Bearer ${token}`
   }
-  const res = await fetch(`${API_BASE}${path}`, { ...options, headers })
+  const res = await fetch(`${baseUrl}${path}`, { ...options, headers })
   const text = await res.text()
   const data = text ? JSON.parse(text) : null
   return { ok: res.ok, status: res.status, data }

@@ -1,9 +1,11 @@
 import { useEffect, useState } from "react"
 import {
   getCachedUser,
+  getServerUrl,
   getSession,
   removeCachedUser,
   setCachedUser,
+  setServerUrl,
   signIn,
   signOut,
 } from "../../lib/auth-client"
@@ -17,10 +19,12 @@ interface User {
 }
 type Status = "idle" | "loading" | "success" | "error"
 const WWW_PREFIX_REGEX = /^www\./
+const TRAILING_SLASH_REGEX = /\/+$/
 
 function App() {
   const [user, setUser] = useState<User | null>(null)
   const [checking, setChecking] = useState(true)
+  const [page, setPage] = useState<"main" | "settings">("main")
 
   useEffect(() => {
     getCachedUser().then((cached) => {
@@ -57,23 +61,37 @@ function App() {
     )
   }
 
+  if (page === "settings") {
+    return <SettingsPage onBack={() => setPage("main")} />
+  }
+
   if (!user) {
     return <LoginForm onLogin={setUser} />
   }
 
-  return <SavePage onLogout={() => setUser(null)} user={user} />
+  return (
+    <SavePage onLogout={() => setUser(null)} onSettings={() => setPage("settings")} user={user} />
+  )
 }
 
 function LoginForm({ onLogin }: { onLogin: (user: User) => void }) {
+  const [server, setServer] = useState("")
   const [email, setEmail] = useState("")
   const [password, setPassword] = useState("")
   const [status, setStatus] = useState<Status>("idle")
   const [error, setError] = useState("")
 
+  useEffect(() => {
+    getServerUrl().then(setServer)
+  }, [])
+
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
     setStatus("loading")
     setError("")
+
+    const trimmed = server.replace(TRAILING_SLASH_REGEX, "")
+    await setServerUrl(trimmed)
 
     try {
       const res = await signIn(email, password)
@@ -96,6 +114,14 @@ function LoginForm({ onLogin }: { onLogin: (user: User) => void }) {
     <div className="app">
       <h1 style={{ fontSize: 16, fontWeight: 600 }}>MindPocket</h1>
       <form className="form" onSubmit={handleSubmit}>
+        <input
+          className="input"
+          onChange={(e) => setServer(e.target.value)}
+          placeholder="服务器地址"
+          required
+          type="url"
+          value={server}
+        />
         <input
           className="input"
           onChange={(e) => setEmail(e.target.value)}
@@ -121,7 +147,15 @@ function LoginForm({ onLogin }: { onLogin: (user: User) => void }) {
   )
 }
 
-function SavePage({ user, onLogout }: { user: User; onLogout: () => void }) {
+function SavePage({
+  user,
+  onLogout,
+  onSettings,
+}: {
+  user: User
+  onLogout: () => void
+  onSettings: () => void
+}) {
   const [status, setStatus] = useState<Status>("idle")
   const [message, setMessage] = useState("")
   const [pageInfo, setPageInfo] = useState<{
@@ -160,16 +194,36 @@ function SavePage({ user, onLogout }: { user: User; onLogout: () => void }) {
     <div className="app">
       <div className="header">
         <h1>MindPocket</h1>
-        <button
-          className="logout-btn"
-          onClick={async () => {
-            await signOut()
-            onLogout()
-          }}
-          type="button"
-        >
-          退出
-        </button>
+        <div className="header-actions">
+          <button className="settings-btn" onClick={onSettings} title="设置" type="button">
+            <svg
+              className="lucide lucide-settings-icon lucide-settings"
+              fill="none"
+              height="20"
+              stroke="currentColor"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              strokeWidth="2"
+              viewBox="0 0 24 24"
+              width="20"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <title>设置</title>
+              <path d="M9.671 4.136a2.34 2.34 0 0 1 4.659 0 2.34 2.34 0 0 0 3.319 1.915 2.34 2.34 0 0 1 2.33 4.033 2.34 2.34 0 0 0 0 3.831 2.34 2.34 0 0 1-2.33 4.033 2.34 2.34 0 0 0-3.319 1.915 2.34 2.34 0 0 1-4.659 0 2.34 2.34 0 0 0-3.32-1.915 2.34 2.34 0 0 1-2.33-4.033 2.34 2.34 0 0 0 0-3.831A2.34 2.34 0 0 1 6.35 6.051a2.34 2.34 0 0 0 3.319-1.915" />
+              <circle cx="12" cy="12" r="3" />
+            </svg>
+          </button>
+          <button
+            className="logout-btn"
+            onClick={async () => {
+              await signOut()
+              onLogout()
+            }}
+            type="button"
+          >
+            退出
+          </button>
+        </div>
       </div>
       <p className="user-info">{user.email}</p>
       {pageInfo && (
@@ -203,6 +257,53 @@ function SavePage({ user, onLogout }: { user: User; onLogout: () => void }) {
       </button>
       {status === "success" && <p className="success">{message}</p>}
       {status === "error" && <p className="error">{message}</p>}
+    </div>
+  )
+}
+
+function SettingsPage({ onBack }: { onBack: () => void }) {
+  const [serverUrl, setServerUrlState] = useState("")
+  const [status, setStatus] = useState<Status>("idle")
+
+  useEffect(() => {
+    getServerUrl().then(setServerUrlState)
+  }, [])
+
+  const handleSave = async () => {
+    const trimmed = serverUrl.replace(TRAILING_SLASH_REGEX, "")
+    setStatus("loading")
+    await setServerUrl(trimmed)
+    setServerUrlState(trimmed)
+    setStatus("success")
+    setTimeout(() => setStatus("idle"), 1500)
+  }
+
+  return (
+    <div className="app">
+      <div className="header">
+        <h1 style={{ fontSize: 16, fontWeight: 600 }}>设置</h1>
+        <button className="settings-btn" onClick={onBack} type="button">
+          ← 返回
+        </button>
+      </div>
+      <label className="settings-label" htmlFor="server-url">
+        服务器地址
+      </label>
+      <input
+        className="input"
+        id="server-url"
+        onChange={(e) => setServerUrlState(e.target.value)}
+        placeholder="http://127.0.0.1:3000"
+        value={serverUrl}
+      />
+      <button
+        className="btn btn-primary"
+        disabled={status === "loading"}
+        onClick={handleSave}
+        type="button"
+      >
+        {status === "success" ? "已保存" : "保存"}
+      </button>
     </div>
   )
 }

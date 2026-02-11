@@ -1,9 +1,10 @@
 import { Ionicons } from "@expo/vector-icons"
 import { Redirect, Tabs } from "expo-router"
 import { ActivityIndicator, StyleSheet, View } from "react-native"
-import { authClient } from "@/lib/auth-client"
+import { useAuth } from "@/lib/auth-context"
 
 export default function TabLayout() {
+  const { authClient } = useAuth()
   const { data: session, isPending } = authClient.useSession()
 
   if (isPending) {

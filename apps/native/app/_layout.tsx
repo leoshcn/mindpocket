@@ -6,11 +6,12 @@ import { Alert } from "react-native"
 import { GestureHandlerRootView } from "react-native-gesture-handler"
 import { SafeAreaProvider } from "react-native-safe-area-context"
 import { saveBookmark } from "@/lib/api"
-import { authClient } from "@/lib/auth-client"
+import { useAuth, AuthProvider } from "@/lib/auth-context"
 
 function ShareIntentHandler() {
   const router = useRouter()
   const { hasShareIntent, shareIntent, resetShareIntent } = useShareIntent()
+  const { authClient } = useAuth()
   const { data: session } = authClient.useSession()
 
   useEffect(() => {
@@ -51,30 +52,32 @@ function ShareIntentHandler() {
 export default function RootLayout() {
   return (
     <ShareIntentProvider>
-      <GestureHandlerRootView style={{ flex: 1 }}>
-        <SafeAreaProvider>
-          <StatusBar style="dark" />
-          <ShareIntentHandler />
-          <Stack screenOptions={{ headerShown: false }}>
-            <Stack.Screen name="(tabs)" />
-            <Stack.Screen
-              name="chat/[id]"
-              options={{
-                headerShown: true,
-                title: "对话",
-                presentation: "card",
-              }}
-            />
-            <Stack.Screen
-              name="login"
-              options={{
-                presentation: "modal",
-                title: "登录",
-              }}
-            />
-          </Stack>
-        </SafeAreaProvider>
-      </GestureHandlerRootView>
+      <AuthProvider>
+        <GestureHandlerRootView style={{ flex: 1 }}>
+          <SafeAreaProvider>
+            <StatusBar style="dark" />
+            <ShareIntentHandler />
+            <Stack screenOptions={{ headerShown: false }}>
+              <Stack.Screen name="(tabs)" />
+              <Stack.Screen
+                name="chat/[id]"
+                options={{
+                  headerShown: true,
+                  title: "对话",
+                  presentation: "card",
+                }}
+              />
+              <Stack.Screen
+                name="login"
+                options={{
+                  presentation: "modal",
+                  title: "登录",
+                }}
+              />
+            </Stack>
+          </SafeAreaProvider>
+        </GestureHandlerRootView>
+      </AuthProvider>
     </ShareIntentProvider>
   )
 }

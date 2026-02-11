@@ -1,8 +1,8 @@
 import { DefaultChatTransport } from "ai"
 import { fetch as expoFetch } from "expo/fetch"
 import { getItem } from "expo-secure-store"
+import { getServerUrl } from "./server-config"
 
-const API_URL = process.env.EXPO_PUBLIC_API_URL || "http://127.0.0.1:3000"
 const IS_WEB = typeof document !== "undefined"
 
 function getCookie(): string {
@@ -25,7 +25,7 @@ interface CreateChatTransportOptions {
 
 export function createChatTransport(options?: CreateChatTransportOptions) {
   return new DefaultChatTransport({
-    api: `${API_URL}/api/chat`,
+    api: `${getServerUrl()}/api/chat`,
     fetch: (async (input, init) => {
       const response = await (expoFetch as unknown as typeof globalThis.fetch)(input, {
         credentials: "include",

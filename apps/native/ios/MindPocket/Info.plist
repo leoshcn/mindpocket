@@ -3,13 +3,13 @@
 <plist version="1.0">
 <dict>
 	<key>AppGroupIdentifier</key>
-	<string>group.com.turbo.sanjin</string>
+	<string>group.com.turbo.example</string>
 	<key>CADisableMinimumFrameDurationOnPhone</key>
 	<true/>
 	<key>CFBundleDevelopmentRegion</key>
 	<string>$(DEVELOPMENT_LANGUAGE)</string>
 	<key>CFBundleDisplayName</key>
-	<string>native</string>
+	<string>MindPocket</string>
 	<key>CFBundleExecutable</key>
 	<string>$(EXECUTABLE_NAME)</string>
 	<key>CFBundleIdentifier</key>
@@ -30,7 +30,7 @@
 			<key>CFBundleURLSchemes</key>
 			<array>
 				<string>mindpocket</string>
-				<string>com.turbo.sanjin</string>
+				<string>com.turbo.example</string>
 			</array>
 		</dict>
 	</array>

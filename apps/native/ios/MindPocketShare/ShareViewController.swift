@@ -10,7 +10,7 @@ import Social
 import UIKit
 
 class ShareViewController: UIViewController {
-  let hostAppGroupIdentifier = "group.com.turbo.sanjin"
+  let hostAppGroupIdentifier = "group.com.turbo.example"
   let shareProtocol = "mindpocket"
   let sharedKey = "mindpocketShareKey"
   var sharedMedia: [SharedMediaFile] = []
