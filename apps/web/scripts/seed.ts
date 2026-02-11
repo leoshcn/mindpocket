@@ -15,7 +15,7 @@ async function seed() {
 
   if (existingUsers.length === 0) {
     console.error("❌ 数据库中没有用户，请先创建用户:")
-    console.error("   pnpm tsx scripts/create-user.ts admin@mindpocket.com admin123456 Admin")
+    console.error("   pnpm tsx scripts/create-user.ts xxx@mindpocket.com xxxxx Admin")
     process.exit(1)
   }
 

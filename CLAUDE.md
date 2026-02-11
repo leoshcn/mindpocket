@@ -164,10 +164,5 @@ Turborepo 会缓存构建结果以加速后续构建。如果遇到缓存问题�
 以确保代码质量。
 
 
-邮箱: admin@mindpocket.com
-密码: admin123456
-
-
-
 ## 参考
 ./PROJECT.md

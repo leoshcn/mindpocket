@@ -98,9 +98,6 @@ cp .env.example .env.local
 # 初始化数据库
 pnpm db:push
 
-# 创建管理员账号
-pnpm tsx scripts/create-user.ts admin@mindpocket.com admin123456 "Admin"
-
 # 启动开发服务器
 cd ../..
 pnpm dev

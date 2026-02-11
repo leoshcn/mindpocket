@@ -96,9 +96,6 @@ cp .env.example .env.local
 # Initialize database
 pnpm db:push
 
-# Create admin account
-pnpm tsx scripts/create-user.ts admin@mindpocket.com admin123456 "Admin"
-
 # Start development server
 cd ../..
 pnpm dev
