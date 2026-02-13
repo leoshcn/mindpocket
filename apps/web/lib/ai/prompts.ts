@@ -1,5 +1,4 @@
-import { generateText } from "ai"
-import { getTitleModel } from "./provider"
+import { generateText, type LanguageModel } from "ai"
 
 export const systemPrompt = `你是 MindPocket 的 AI 助手，一个友好、专业的中英文双语助手。
 你擅长回答各种问题，包括编程、学习、写作等。
@@ -12,9 +11,15 @@ export const systemPrompt = `你是 MindPocket 的 AI 助手，一个友好、�
 const titlePrompt =
   "根据用户的第一条消息，生成一个简短的聊天标题（2-5个词），不要使用引号或标点符号。直接返回标题文本。"
 
-export async function generateTitleFromUserMessage({ message }: { message: string }) {
+export async function generateTitleFromUserMessage({
+  message,
+  model,
+}: {
+  message: string
+  model: LanguageModel
+}) {
   const { text: title } = await generateText({
-    model: getTitleModel(),
+    model,
     system: titlePrompt,
     prompt: message,
   })

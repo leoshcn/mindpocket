@@ -2,12 +2,12 @@
 
 import { useChat } from "@ai-sdk/react"
 import { DefaultChatTransport, type UIMessage } from "ai"
-import { useCallback, useMemo, useRef, useState } from "react"
+import { useCallback, useEffect, useMemo, useRef, useState } from "react"
 import { toast } from "sonner"
 import type { PromptInputMessage } from "@/components/ai-elements/prompt-input"
 import { ChatInput } from "@/components/chat-input"
 import { ChatMessages } from "@/components/chat-messages"
-import { DEFAULT_CHAT_MODEL } from "@/lib/ai/models"
+import { useT } from "@/lib/i18n"
 
 function getGreeting(): string {
   const hour = new Date().getHours()
@@ -32,8 +32,9 @@ export function Chat({
   initialMessages?: UIMessage[]
   autoResume?: boolean
 }) {
+  const t = useT()
   const [input, setInput] = useState("")
-  const [selectedModelId, setSelectedModelId] = useState(DEFAULT_CHAT_MODEL)
+  const [selectedModelId, setSelectedModelId] = useState("")
   const [useKnowledgeBase, setUseKnowledgeBase] = useState(true)
   const hasReplacedUrl = useRef(false)
   const greeting = useMemo(() => getGreeting(), [])
@@ -41,6 +42,23 @@ export function Chat({
   selectedModelIdRef.current = selectedModelId
   const useKnowledgeBaseRef = useRef(useKnowledgeBase)
   useKnowledgeBaseRef.current = useKnowledgeBase
+
+  // Fetch user's default chat model on mount
+  useEffect(() => {
+    fetch("/api/ai-providers")
+      .then((res) => res.json())
+      .then((providers: Array<{ id: string; type: string; isDefault: boolean }>) => {
+        const defaultChat = providers.find((p) => p.type === "chat" && p.isDefault)
+        const firstChat = providers.find((p) => p.type === "chat")
+        const model = defaultChat || firstChat
+        if (model) {
+          setSelectedModelId(model.id)
+        }
+      })
+      .catch(() => {
+        // ignore fetch errors
+      })
+  }, [])
 
   const transport = useMemo(
     () =>
@@ -60,6 +78,10 @@ export function Chat({
     transport,
     experimental_throttle: 50,
     onError: (error) => {
+      if (error.message?.includes("no_chat_model")) {
+        toast.error(t.settings.aiModelNoChatModel)
+        return
+      }
       toast.error("发送失败", {
         description: error.message || "请稍后重试",
       })

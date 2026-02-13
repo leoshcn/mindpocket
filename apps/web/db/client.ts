@@ -1,5 +1,6 @@
 import { neon } from "@neondatabase/serverless"
 import { drizzle } from "drizzle-orm/neon-http"
+import { userAiProvider, userAiProviderRelations } from "./schema/ai-provider"
 import {
   account,
   accountRelations,
@@ -38,6 +39,8 @@ const schema = {
   message,
   messageRelations,
   embedding,
+  userAiProvider,
+  userAiProviderRelations,
 }
 
 export const db = drizzle(sql, { schema })

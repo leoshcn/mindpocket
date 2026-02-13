@@ -64,6 +64,13 @@
       "when": 1770700610761,
       "tag": "0008_adorable_microchip",
       "breakpoints": true
+    },
+    {
+      "idx": 9,
+      "version": "7",
+      "when": 1770977641759,
+      "tag": "0009_blue_blindfold",
+      "breakpoints": true
     }
   ]
 }

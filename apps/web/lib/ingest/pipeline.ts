@@ -2,9 +2,11 @@ import { put } from "@vercel/blob"
 import { eq } from "drizzle-orm"
 import { nanoid } from "nanoid"
 import { db } from "@/db/client"
+import { getDefaultProvider } from "@/db/queries/ai-provider"
 import { bookmark } from "@/db/schema/bookmark"
 import { embedding as embeddingTable } from "@/db/schema/embedding"
 import { generateEmbeddings } from "@/lib/ai/embedding"
+import { getEmbeddingModel } from "@/lib/ai/provider"
 import {
   convertBuffer,
   convertUrl,
@@ -55,9 +57,15 @@ async function updateBookmarkStatus(bookmarkId: string, status: IngestStatus, er
     .where(eq(bookmark.id, bookmarkId))
 }
 
-async function generateAndStoreEmbeddings(bookmarkId: string, content: string) {
+async function generateAndStoreEmbeddings(bookmarkId: string, content: string, userId: string) {
+  const config = await getDefaultProvider(userId, "embedding")
+  if (!config) {
+    return
+  }
+
+  const model = getEmbeddingModel(config)
   await db.delete(embeddingTable).where(eq(embeddingTable.bookmarkId, bookmarkId))
-  const embeddings = await generateEmbeddings(bookmarkId, content)
+  const embeddings = await generateEmbeddings(bookmarkId, content, model)
   if (embeddings.length > 0) {
     await db.insert(embeddingTable).values(embeddings)
   }
@@ -82,12 +90,17 @@ export async function ingestFromUrl(params: IngestUrlParams): Promise<IngestResu
   })
 
   // 触发后台处理，不 await
-  processIngestUrl(bookmarkId, url, userTitle).catch(console.error)
+  processIngestUrl(bookmarkId, url, userId, userTitle).catch(console.error)
 
   return { bookmarkId, title: userTitle || url, markdown: null, type, status: "pending" }
 }
 
-async function processIngestUrl(bookmarkId: string, url: string, userTitle?: string) {
+async function processIngestUrl(
+  bookmarkId: string,
+  url: string,
+  userId: string,
+  userTitle?: string
+) {
   await updateBookmarkStatus(bookmarkId, "processing")
   try {
     const platform = inferPlatform(url)
@@ -125,7 +138,7 @@ async function processIngestUrl(bookmarkId: string, url: string, userTitle?: str
       .set({ title: finalTitle, description, content: result.markdown, ingestStatus: "completed" })
       .where(eq(bookmark.id, bookmarkId))
 
-    generateAndStoreEmbeddings(bookmarkId, result.markdown).catch(console.error)
+    generateAndStoreEmbeddings(bookmarkId, result.markdown, userId).catch(console.error)
   } catch (error) {
     const errMsg = error instanceof Error ? error.message : "Unknown error"
     await updateBookmarkStatus(bookmarkId, "failed", errMsg)
@@ -166,7 +179,9 @@ export async function ingestFromFile(params: IngestFileParams): Promise<IngestRe
 
   // 触发后台处理，不 await
   const buffer = Buffer.from(fileBuffer)
-  processIngestFile(bookmarkId, buffer, fileExtension, userTitle, fileName).catch(console.error)
+  processIngestFile(bookmarkId, buffer, fileExtension, userId, userTitle, fileName).catch(
+    console.error
+  )
 
   return { bookmarkId, title: userTitle || fileName, markdown: null, type, status: "pending" }
 }
@@ -175,6 +190,7 @@ async function processIngestFile(
   bookmarkId: string,
   buffer: Buffer,
   fileExtension: string,
+  userId: string,
   userTitle?: string,
   fileName?: string
 ) {
@@ -195,7 +211,7 @@ async function processIngestFile(
       .set({ title: finalTitle, description, content: result.markdown, ingestStatus: "completed" })
       .where(eq(bookmark.id, bookmarkId))
 
-    generateAndStoreEmbeddings(bookmarkId, result.markdown).catch(console.error)
+    generateAndStoreEmbeddings(bookmarkId, result.markdown, userId).catch(console.error)
   } catch (error) {
     const errMsg = error instanceof Error ? error.message : "Unknown error"
     await updateBookmarkStatus(bookmarkId, "failed", errMsg)
@@ -221,7 +237,7 @@ export async function ingestFromExtension(params: IngestExtensionParams): Promis
   })
 
   // 触发后台处理，不 await
-  processIngestExtension(bookmarkId, html, url, platform, userTitle).catch(console.error)
+  processIngestExtension(bookmarkId, html, url, platform, userId, userTitle).catch(console.error)
 
   return { bookmarkId, title: userTitle || url, markdown: null, type: "article", status: "pending" }
 }
@@ -231,6 +247,7 @@ async function processIngestExtension(
   html: string | undefined,
   url: string,
   platform: string | null,
+  userId: string,
   userTitle?: string
 ) {
   await updateBookmarkStatus(bookmarkId, "processing")
@@ -266,7 +283,7 @@ async function processIngestExtension(
       .set({ title: finalTitle, description, content: result.markdown, ingestStatus: "completed" })
       .where(eq(bookmark.id, bookmarkId))
 
-    generateAndStoreEmbeddings(bookmarkId, result.markdown).catch(console.error)
+    generateAndStoreEmbeddings(bookmarkId, result.markdown, userId).catch(console.error)
   } catch (error) {
     const errMsg = error instanceof Error ? error.message : "Unknown error"
     await updateBookmarkStatus(bookmarkId, "failed", errMsg)

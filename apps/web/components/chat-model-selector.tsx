@@ -1,7 +1,7 @@
 "use client"
 
-import { Check } from "lucide-react"
-import { useState } from "react"
+import { Bot, Check, Settings } from "lucide-react"
+import { useEffect, useState } from "react"
 import {
   ModelSelector,
   ModelSelectorContent,
@@ -10,12 +10,12 @@ import {
   ModelSelectorInput,
   ModelSelectorItem,
   ModelSelectorList,
-  ModelSelectorLogo,
   ModelSelectorName,
   ModelSelectorTrigger,
 } from "@/components/ai-elements/model-selector"
 import { PromptInputButton } from "@/components/ai-elements/prompt-input"
-import { chatModels } from "@/lib/ai/models"
+import type { ChatModel } from "@/lib/ai/models"
+import { useT } from "@/lib/i18n"
 
 export function ChatModelSelector({
   selectedModelId,
@@ -24,14 +24,45 @@ export function ChatModelSelector({
   selectedModelId: string
   onModelChange: (modelId: string) => void
 }) {
+  const t = useT()
   const [open, setOpen] = useState(false)
-  const selectedModel = chatModels.find((m) => m.id === selectedModelId)
+  const [models, setModels] = useState<ChatModel[]>([])
+
+  useEffect(() => {
+    fetch("/api/ai-providers?type=chat")
+      .then((res) => res.json())
+      .then((data: ChatModel[]) => {
+        setModels(data.filter((m) => m.type === "chat"))
+      })
+      .catch(() => {
+        // ignore fetch errors
+      })
+  }, [])
+
+  const selectedModel = models.find((m) => m.id === selectedModelId)
+
+  if (models.length === 0) {
+    return (
+      <PromptInputButton
+        onClick={() => {
+          // Dispatch a custom event to open settings dialog on AI model tab
+          window.dispatchEvent(new CustomEvent("open-settings", { detail: "ai-model" }))
+        }}
+        size="sm"
+        tooltip={t.settings.aiModelNoChatModel}
+      >
+        <Bot className="size-4" />
+        <span className="text-xs">{t.settings.aiModelGoSettings}</span>
+        <Settings className="size-3" />
+      </PromptInputButton>
+    )
+  }
 
   return (
     <ModelSelector onOpenChange={setOpen} open={open}>
       <ModelSelectorTrigger asChild>
         <PromptInputButton size="sm" tooltip="选择模型">
-          {selectedModel && <ModelSelectorLogo provider={selectedModel.provider} />}
+          <Bot className="size-4" />
           <span className="text-xs">{selectedModel?.name ?? "选择模型"}</span>
         </PromptInputButton>
       </ModelSelectorTrigger>
@@ -40,7 +71,7 @@ export function ChatModelSelector({
         <ModelSelectorList>
           <ModelSelectorEmpty>未找到模型</ModelSelectorEmpty>
           <ModelSelectorGroup>
-            {chatModels.map((model) => (
+            {models.map((model) => (
               <ModelSelectorItem
                 key={model.id}
                 onSelect={() => {
@@ -49,9 +80,9 @@ export function ChatModelSelector({
                 }}
                 value={model.id}
               >
-                <ModelSelectorLogo provider={model.provider} />
+                <Bot className="size-4 text-muted-foreground" />
                 <ModelSelectorName>{model.name}</ModelSelectorName>
-                <span className="text-muted-foreground text-xs">{model.description}</span>
+                <span className="text-muted-foreground text-xs">{model.modelId}</span>
                 {model.id === selectedModelId && <Check className="ml-auto size-4" />}
               </ModelSelectorItem>
             ))}

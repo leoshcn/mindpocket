@@ -1,8 +1,9 @@
 "use client"
 
-import { Globe, Palette, User } from "lucide-react"
+import { Bot, Globe, Palette, User } from "lucide-react"
 import { useState } from "react"
 import { SettingsAccount } from "@/components/settings/settings-account"
+import { SettingsAiModel } from "@/components/settings/settings-ai-model"
 import { SettingsAppearance } from "@/components/settings/settings-appearance"
 import { SettingsLanguage } from "@/components/settings/settings-language"
 import {
@@ -15,7 +16,7 @@ import {
 import { useT } from "@/lib/i18n"
 import { cn } from "@/lib/utils"
 
-type SettingsTab = "account" | "appearance" | "language"
+type SettingsTab = "account" | "appearance" | "language" | "ai-model"
 
 interface SettingsDialogProps {
   open: boolean
@@ -33,6 +34,7 @@ export function SettingsDialog({ open, onOpenChange, user }: SettingsDialogProps
 
   const tabs = [
     { value: "account" as const, label: t.settings.account, icon: User },
+    { value: "ai-model" as const, label: t.settings.aiModel, icon: Bot },
     { value: "appearance" as const, label: t.settings.appearance, icon: Palette },
     { value: "language" as const, label: t.settings.language, icon: Globe },
   ]
@@ -66,6 +68,7 @@ export function SettingsDialog({ open, onOpenChange, user }: SettingsDialogProps
           </nav>
           <div className="flex-1 overflow-y-auto p-6">
             {activeTab === "account" && <SettingsAccount user={user} />}
+            {activeTab === "ai-model" && <SettingsAiModel />}
             {activeTab === "appearance" && <SettingsAppearance />}
             {activeTab === "language" && <SettingsLanguage />}
           </div>

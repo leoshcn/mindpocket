@@ -1,10 +1,12 @@
 import { and, cosineDistance, desc, eq, gt, ilike, inArray, or, type SQL, sql } from "drizzle-orm"
 import { db } from "@/db/client"
+import { getDefaultProvider } from "@/db/queries/ai-provider"
 import { bookmark } from "@/db/schema/bookmark"
 import { embedding } from "@/db/schema/embedding"
 import { folder } from "@/db/schema/folder"
 import { bookmarkTag, tag } from "@/db/schema/tag"
 import { generateEmbedding } from "@/lib/ai/embedding"
+import { getEmbeddingModel } from "@/lib/ai/provider"
 import type { SearchMatchReason, SearchMode, SearchScope } from "@/lib/search/types"
 import { parseSearchMode } from "@/lib/search/types"
 
@@ -305,7 +307,12 @@ async function semanticSearch({
   platform?: string
   limit: number
 }): Promise<SearchHit[]> {
-  const queryEmbedding = await generateEmbedding(q)
+  const embeddingConfig = await getDefaultProvider(userId, "embedding")
+  if (!embeddingConfig) {
+    return []
+  }
+  const model = getEmbeddingModel(embeddingConfig)
+  const queryEmbedding = await generateEmbedding(q, model)
   const similarity = sql<number>`1 - (${cosineDistance(embedding.embedding, queryEmbedding)})`
   const scoreExpr = sql<number>`max(${similarity})`
 

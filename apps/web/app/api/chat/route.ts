@@ -12,6 +12,7 @@ import { headers } from "next/headers"
 import { after } from "next/server"
 import { createResumableStreamContext } from "resumable-stream"
 import { z } from "zod"
+import { getDefaultProvider, getProviderWithDecryptedKey } from "@/db/queries/ai-provider"
 import {
   clearActiveStreamId,
   createStreamId,
@@ -100,6 +101,18 @@ export async function POST(req: Request) {
 
   const userId = session.user.id
 
+  // Resolve chat model config
+  let config: Awaited<ReturnType<typeof getProviderWithDecryptedKey>> = null
+  if (selectedChatModel) {
+    config = await getProviderWithDecryptedKey(selectedChatModel, userId)
+  }
+  if (!config) {
+    config = await getDefaultProvider(userId, "chat")
+  }
+  if (!config) {
+    return withCors(req, Response.json({ error: "no_chat_model" }, { status: 400 }))
+  }
+
   const userMessage = messages.at(-1)
   if (!userMessage || userMessage.role !== "user") {
     return withCors(req, new Response("Invalid message", { status: 400 }))
@@ -124,10 +137,12 @@ export async function POST(req: Request) {
     ],
   })
 
+  const model = getChatModel(config)
+
   const stream = createUIMessageStream({
     execute: async ({ writer }) => {
       const result = streamText({
-        model: getChatModel(selectedChatModel),
+        model,
         system: systemPrompt,
         messages: await convertToModelMessages(messages),
         tools: useKnowledgeBase
@@ -171,7 +186,7 @@ export async function POST(req: Request) {
       if (isNewChat) {
         const textPart = userMessage.parts.find((p) => p.type === "text")
         if (textPart && "text" in textPart) {
-          generateTitleFromUserMessage({ message: textPart.text }).then(async (title) => {
+          generateTitleFromUserMessage({ message: textPart.text, model }).then(async (title) => {
             await updateChatTitle({ chatId: id, title })
           })
         }
