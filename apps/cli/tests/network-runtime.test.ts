@@ -32,7 +32,7 @@ test("resolveProxyConfig merges proxy env values and keeps NO_PROXY rules", () =
   )
 })
 
-test("installNetworkRuntime keeps the current dispatcher when no proxy env is set", () => {
+test("installNetworkRuntime keeps the current dispatcher when no proxy env is set", async () => {
   const originalDispatcher = getGlobalDispatcher()
   const sentinelDispatcher = new Agent()
   setGlobalDispatcher(sentinelDispatcher)
@@ -42,11 +42,11 @@ test("installNetworkRuntime keeps the current dispatcher when no proxy env is se
     assert.equal(getGlobalDispatcher(), sentinelDispatcher)
   } finally {
     setGlobalDispatcher(originalDispatcher)
-    void sentinelDispatcher.close()
+    await sentinelDispatcher.close()
   }
 })
 
-test("installNetworkRuntime installs a proxy-aware dispatcher when proxy env is present", () => {
+test("installNetworkRuntime installs a proxy-aware dispatcher when proxy env is present", async () => {
   const originalDispatcher = getGlobalDispatcher()
   const sentinelDispatcher = new Agent()
   setGlobalDispatcher(sentinelDispatcher)
@@ -63,9 +63,9 @@ test("installNetworkRuntime installs a proxy-aware dispatcher when proxy env is 
     const activeDispatcher = getGlobalDispatcher()
     setGlobalDispatcher(originalDispatcher)
     if (activeDispatcher !== originalDispatcher && "close" in activeDispatcher) {
-      void (activeDispatcher as Agent | ProxyEnvironmentDispatcher).close()
+      await (activeDispatcher as Agent | ProxyEnvironmentDispatcher).close()
     }
-    void sentinelDispatcher.close()
+    await sentinelDispatcher.close()
   }
 })
 

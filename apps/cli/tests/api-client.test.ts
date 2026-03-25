@@ -12,9 +12,7 @@ test("ApiClient wraps fetch failures as SERVER_UNREACHABLE with useful details",
     }),
   })
 
-  globalThis.fetch = (async () => {
-    throw networkFailure
-  }) as typeof fetch
+  globalThis.fetch = (() => Promise.reject(networkFailure)) as typeof fetch
 
   try {
     const client = new ApiClient("https://mindpocket-web.vercel.app")

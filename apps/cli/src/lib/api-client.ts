@@ -1,4 +1,3 @@
-import { CliError } from "./errors.js"
 import { ensureOk, parseJsonResponse } from "./http.js"
 import { toServerUnreachableError } from "./network-runtime.js"
 

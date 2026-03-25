@@ -2,6 +2,9 @@ import { Agent, Dispatcher, ProxyAgent, setGlobalDispatcher } from "undici"
 import { CliError } from "./errors.js"
 
 const PROXY_URL_ENV_KEYS = ["http_proxy", "https_proxy", "HTTP_PROXY", "HTTPS_PROXY"] as const
+const NO_PROXY_SPLIT_REGEX = /[,\s]/
+const NO_PROXY_HOST_PORT_REGEX = /^(.+):(\d+)$/
+const NO_PROXY_WILDCARD_PREFIX_REGEX = /^\*?\./
 
 type SerializableDetails =
   | string
@@ -33,7 +36,7 @@ export class ProxyEnvironmentDispatcher extends Dispatcher {
   private readonly httpsProxyAgent: Dispatcher
   private readonly noProxyEntries: NoProxyEntry[]
 
-  constructor(private readonly config: ProxyConfig) {
+  constructor(config: ProxyConfig) {
     super()
 
     this.httpProxyAgent = config.httpProxy
@@ -66,8 +69,7 @@ export class ProxyEnvironmentDispatcher extends Dispatcher {
     )
   }
 
-  override destroy(): Promise<void>
-  override destroy(err: Error | null): Promise<void>
+  override destroy(err?: Error | null): Promise<void>
   override destroy(callback: () => void): void
   override destroy(err: Error | null, callback: () => void): void
   override destroy(
@@ -84,7 +86,7 @@ export class ProxyEnvironmentDispatcher extends Dispatcher {
     ).then(() => undefined)
 
     if (complete) {
-      void work.finally(complete)
+      work.finally(complete).catch(() => undefined)
       return
     }
 
@@ -104,7 +106,7 @@ export function resolveProxyConfig(env: NodeJS.ProcessEnv = process.env): ProxyC
   const httpProxy = env.http_proxy || env.HTTP_PROXY
   const httpsProxy = env.https_proxy || env.HTTPS_PROXY
 
-  if (!httpProxy && !httpsProxy) {
+  if (!(httpProxy || httpsProxy)) {
     return null
   }
 
@@ -135,12 +137,14 @@ function parseNoProxy(noProxyValue?: string) {
   }
 
   return noProxyValue
-    .split(/[,\s]/)
+    .split(NO_PROXY_SPLIT_REGEX)
     .filter(Boolean)
     .map((entry) => {
-      const parsed = entry.match(/^(.+):(\d+)$/)
+      const parsed = entry.match(NO_PROXY_HOST_PORT_REGEX)
       return {
-        hostname: (parsed ? parsed[1] : entry).replace(/^\*?\./, "").toLowerCase(),
+        hostname: (parsed ? parsed[1] : entry)
+          .replace(NO_PROXY_WILDCARD_PREFIX_REGEX, "")
+          .toLowerCase(),
         port: parsed ? Number.parseInt(parsed[2], 10) : 0,
       }
     })

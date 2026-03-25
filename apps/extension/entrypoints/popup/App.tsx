@@ -80,7 +80,7 @@ function App() {
     return <SettingsPage onBack={() => setPage("main")} onLogout={handleLogout} user={user} />
   }
 
-  return <SavePage onSettings={() => setPage("settings")} user={user} />
+  return <SavePage onSettings={() => setPage("settings")} />
 }
 
 function LoginForm({ onLogin }: { onLogin: (user: User) => void }) {
@@ -156,13 +156,7 @@ function LoginForm({ onLogin }: { onLogin: (user: User) => void }) {
   )
 }
 
-function SavePage({
-  user,
-  onSettings,
-}: {
-  user: User
-  onSettings: () => void
-}) {
+function SavePage({ onSettings }: { onSettings: () => void }) {
   const [status, setStatus] = useState<Status>("idle")
   const [message, setMessage] = useState("")
   const [pageInfo, setPageInfo] = useState<{
